@@ -10,7 +10,7 @@ export default function CustomInput({
 }) {
 	return (
 		<div className="mb-3">
-			<label className="h6 form-label" for={name}>
+			<label className="h6 form-label" htmlFor={name}>
 				{label}
 			</label>
 			<input

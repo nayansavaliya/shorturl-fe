@@ -1,7 +1,17 @@
 export default function Stats({
-	...otherProps
+    data,
+    handle
 }) {
+    
+    if(!data){
+        return(
+            <div>
+            </div>
+        )
+    }
 	return (
+        <>
+        
         <div className="table-responsive" style={{height: '25rem', overflow: 'auto'}}>
             <table className="table" >
             <thead>
@@ -14,16 +24,26 @@ export default function Stats({
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                <td>1</td>
-                <td>Anna</td>
-                <td>Pitt</td>
-                <td>35</td>
-                <td>New York</td>
-                </tr>
+               
+                {
+                    data.map(
                 
+                        (stat, index) => {
+                            return(
+                                <tr key = {index+1}>
+                                <td>{index+1}</td>
+                                <td>{stat.longUrl}</td>
+                                <td><a href={stat.shortUrl} target="_blank" onClick={()=>handle()}>{stat.shortUrl}</a></td>
+                                <td>{stat.shorteningAtempts}</td>
+                                <td>{stat.hits}</td>
+                                </tr>
+                            );
+                        }
+                    )
+                }
             </tbody>
             </table>
         </div>
+        </>
 	);
 }
